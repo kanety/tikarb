@@ -1,0 +1,11 @@
+/.bundle/
+/.yardoc
+/.project
+/Gemfile.lock
+/_yardoc/
+/bin/tika-app*
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/

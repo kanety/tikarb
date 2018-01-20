@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+url = "http://archive.apache.org/dist/tika/tika-app-#{ENV['TIKA']}.jar"
+`wget #{url} -O tika-app.jar`

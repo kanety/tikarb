@@ -1,0 +1,18 @@
+sudo: false
+language: ruby
+rvm:
+  - 2.3
+  - 2.4
+jdk:
+  - openjdk8
+  - openjdk9
+env:
+  - TIKA=1.14
+  - TIKA=1.15
+  - TIKA=1.16
+  - TIKA=1.17
+before_install:
+  - cd bin
+  - install_tika
+  - cd ..
+script: bundle exec rspec
