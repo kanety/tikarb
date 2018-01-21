@@ -5,7 +5,7 @@ A simple Apache Tika wrapper for ruby using rjb.
 ## Dependencies
 
 * ruby 2.3+
-* tika 1.14+
+* tika 1.16+
 
 ## Installation
 
@@ -36,7 +36,7 @@ Tikarb.parse('/path/to/your/file')
 # detect media type
 Tikarb.detect('/path/to/your/file')
 
-# call tika with command-line options
+# call with command-line options
 Tikarb.cli('--xml', '/path/to/your/file')
 ```
 
@@ -48,11 +48,14 @@ Tikarb.parse(StringIO.new(your_data))
 
 ## Pros and Cons
 
-This gem calls Tika libraries directly via Java Native Interface using rjb.
-In most cases it will be faster than command-line interface, however, there are some cons:
+This gem calls Tika libraries via Java Native Interface using rjb.
 
-* It will require some memories to load JavaVM in the process.
-* It will affect JDK and Tika internal specification change, so you should take account of version dependencies. 
+Pros:
+* It will be faster than command-line interface in case Tika is executed repeatedly.
+
+Cons:
+* It requires some memory to load JavaVM in the process.
+* It will affect JDK and Tika internal specification change.
 
 ## Contributing
 
@@ -61,4 +64,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/kanety
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
