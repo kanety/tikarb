@@ -1,6 +1,6 @@
 # Tikarb
 
-A simple Apache Tika wrapper for ruby using rjb.
+A simple Apache Tika binding for ruby using rjb.
 
 ## Dependencies
 
@@ -21,13 +21,13 @@ And then execute:
 
 ## Usage
 
-Set path to tika-app jar file:
+Setup path to tika-app jar file:
 
 ```ruby
 Tikarb.path = '/path/to/your/tika-app.jar'
 ```
 
-And use as follows:
+Use as follows:
 
 ```ruby
 # extract text and metadata from file
@@ -40,7 +40,7 @@ Tikarb.detect('/path/to/your/file')
 Tikarb.cli('--xml', '/path/to/your/file')
 ```
 
-You can also use `StringIO`:
+You can use `StringIO` as an argument:
 
 ```ruby
 Tikarb.parse(StringIO.new(your_data))

@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Yoshikazu Kaneta"]
   spec.email         = ["kaneta@sitebridge.co.jp"]
 
-  spec.summary       = %q{A simple Apache Tika wrapper for ruby.}
-  spec.description   = %q{A simple Apache Tika wrapper for ruby using rjb.}
+  spec.summary       = %q{A simple Apache Tika binding for ruby.}
+  spec.description   = %q{A simple Apache Tika binding for ruby using rjb.}
   spec.homepage      = "https://github.com/kanety/tikarb"
   spec.license       = "MIT"
 
