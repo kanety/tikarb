@@ -2,23 +2,23 @@ require 'rjb'
 
 class Tikarb
   class Java
-    IMPORTS = ['java.lang.System',
-               'java.io.PrintStream',
-               'java.io.FileInputStream',
-               'java.io.ByteArrayInputStream',
-               'java.io.ByteArrayOutputStream',
-               'org.apache.tika.Tika',
-               'org.apache.tika.cli.TikaCLI',
-               'org.apache.tika.metadata.Metadata']
-
     class << self
       def load
         Rjb::load(Tikarb.path)
 
-        IMPORTS.each do |path|
-          name = path.split('.').last.to_sym
-          Java.const_set(name, Rjb::import(path)) unless Java.const_defined?(name)
-        end
+        import 'java.lang.System'
+        import 'java.io.PrintStream'
+        import 'java.io.FileInputStream'
+        import 'java.io.ByteArrayInputStream'
+        import 'java.io.ByteArrayOutputStream'
+        import 'org.apache.tika.Tika'
+        import 'org.apache.tika.cli.TikaCLI'
+        import 'org.apache.tika.metadata.Metadata'
+      end
+
+      def import(path)
+        name = path.split('.').last.to_sym
+        const_set(name, Rjb::import(path)) unless const_defined?(name)
       end
     end
   end
@@ -30,7 +30,7 @@ class Tikarb
       Java.load
 
       tika = Java::Tika.new
-      tika.detect(file_to_inputStream(file))
+      tika.detect(file_to_input_stream(file))
     end
 
     def parse(file)
@@ -38,7 +38,7 @@ class Tikarb
 
       tika = Java::Tika.new
       metadata = Java::Metadata.new
-      text = tika.parseToString(file_to_inputStream(file), metadata)
+      text = tika.parseToString(file_to_input_stream(file), metadata)
       return text, metadata_to_hash(metadata)
     end
 
@@ -53,7 +53,7 @@ class Tikarb
 
     private
 
-    def file_to_inputStream(file)
+    def file_to_input_stream(file)
       if file.respond_to?(:read)
         Java::ByteArrayInputStream.new(file.read)
       else
