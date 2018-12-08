@@ -9,8 +9,11 @@ jdk:
 env:
   - TIKA=1.16
   - TIKA=1.17
+  - TIKA=1.18
+  - TIKA=1.19.1
 before_install:
   - cd bin
   - ./install_tika
   - cd ..
-script: bundle exec rspec
+script:
+  - bundle exec rspec
