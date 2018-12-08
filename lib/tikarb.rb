@@ -1,4 +1,5 @@
 require 'rjb'
+require 'tikarb/version'
 
 class Tikarb
   class Java
