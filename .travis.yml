@@ -4,13 +4,20 @@ rvm:
   - 2.3
   - 2.4
   - 2.5
+  - 2.6
 jdk:
-  - oraclejdk8
+  - openjdk10
+  - openjdk11
 env:
   - TIKA=1.16
   - TIKA=1.17
+  - TIKA=1.18
+  - TIKA=1.19.1
 before_install:
   - cd bin
   - ./install_tika
   - cd ..
-script: bundle exec rspec
+before_script:
+  - export JVM_LIB="$(find $JAVA_HOME -name libjvm.so)"
+script:
+  - bundle exec rspec
